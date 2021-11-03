@@ -1,10 +1,19 @@
-<div>
-    <link href="{{ url_for('static',filename='styles/home.css') }}" rel="stylesheet" type= "text/css" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | UNSW Mini-Profiles</title>
+</head>
+<body>
+  <div>
+    <link href="{{ url_for('static',filename='styles/signin.css') }}" rel="stylesheet" type= "text/css" />
     <div class="home-container">
       <div class="home-container01">
         <div class="home-container02">
           <img
-            src="./assets/unsw_campus.jpg"
+            src="{{ url_for('static',filename='assets/unsw_campus.jpg') }}"
             alt="image"
             class="home-image"
           />
@@ -22,32 +31,40 @@
               others to aid in finding suitable group members for group
               assignments.
             </span>
-            <form class="home-form">
+            <form class="home-form" method="post">
               <div class="home-container07">
-                <label class="home-text2">Email:</label>
+                <label class="home-text2">zID:</label>
                 <input
+                  name="zid"
                   type="text"
-                  placeholder="Email"
+                  placeholder="zID"
                   class="home-textinput input"
+                  required="required"
                 />
               </div>
               <div class="home-container08">
                 <label class="home-text3">Password:</label>
                 <input
+                  name="password"
                   type="password"
                   placeholder="Password"
                   class="home-textinput1 input"
+                  required="required"
                 />
               </div>
               <div class="home-container09">
-                <button class="home-button button">Create Account</button>
-                <button class="home-button1 button">Sign In</button>
+                <input type="submit" name="signin" class="home-button1 button" value = "Sign In">
+              </div>
+            </form>
+            <form class="home-form1" method="post">
+              <div class="home-container10">
+                <input type="submit" name="createaccount" class="home-button button" value="Create Account">
               </div>
             </form>
           </div>
-          <div class="home-container10">
+          <div class="home-container11">
             <img
-              src="./assets/unsw_logo.png"
+              src="{{ url_for('static',filename='assets/unsw_logo.png') }}"
               alt="image"
               class="home-image1"
             />
@@ -56,4 +73,5 @@
       </div>
     </div>
   </div>
-  
+</body>
+</html>
