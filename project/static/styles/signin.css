@@ -1,4 +1,7 @@
-.home-container {
+body {
+  font-family: arial;
+}
+.sign-in-container {
   width: 100%;
   display: flex;
   overflow: auto;
@@ -7,36 +10,30 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-.home-container01 {
+.sign-in-container01 {
   width: 100%;
   display: flex;
   align-items: flex-start;
+  justify-content: flex-end;
 }
-.home-container02 {
-  flex: 0 0 auto;
-  width: 50%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-.home-image {
+.sign-in-image {
   width: 100%;
   height: 100%;
+  position: absolute;
   object-fit: cover;
 }
-.home-container03 {
+.sign-in-container02 {
   flex: 0 0 auto;
   width: 50%;
   height: 100vh;
   display: flex;
+  position: relative;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #FEDC00;
+  background-color: rgba(255, 255, 255, 0.9);
 }
-.home-container04 {
+.sign-in-container03 {
   flex: 0 0 auto;
   width: 100%;
   height: 200px;
@@ -44,7 +41,7 @@
   align-self: center;
   align-items: flex-start;
 }
-.home-container05 {
+.sign-in-container04 {
   flex: 0 0 auto;
   width: 400px;
   display: flex;
@@ -53,7 +50,7 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-.home-container06 {
+.sign-in-container05 {
   flex: 0 0 auto;
   width: auto;
   height: auto;
@@ -68,21 +65,21 @@
   justify-content: center;
   background-color: #000000;
 }
-.home-text {
+.sign-in-text {
   color: #ffffff;
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
   text-transform: uppercase;
 }
-.home-text1 {
+.sign-in-text1 {
   margin-top: 12px;
   margin-bottom: 12px;
 }
-.home-form {
+.sign-in-form {
   width: 100%;
 }
-.home-container07 {
+.sign-in-container06 {
   flex: 0 0 auto;
   width: 100%;
   display: flex;
@@ -92,16 +89,35 @@
   flex-direction: row;
   justify-content: flex-end;
 }
-.home-text2 {
+.sign-in-text2 {
+  font-style: normal;
+  font-weight: 600;
+  margin-right: 12px;
+}.sign-in-textinput {
+  width: 275px;
+  height: 30px;
+  padding-left: 10px;
+  background-color: #3a3a3a;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+}
+.sign-in-container07 {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  margin-top: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.sign-in-text3 {
   font-style: normal;
   font-weight: 600;
   margin-right: 12px;
 }
-.home-textinput {
-  width: 300px;
-  background-color: #ffffff;
-}
-.home-container08 {
+.sign-in-container08 {
   flex: 0 0 auto;
   width: 100%;
   display: flex;
@@ -111,35 +127,24 @@
   flex-direction: row;
   justify-content: flex-end;
 }
-.home-text3 {
-  font-style: normal;
-  font-weight: 600;
-  margin-right: 12px;
-}
-.home-textinput1 {
-  width: 300px;
-  background-color: #ffffff;
-}
-.home-container09 {
-  flex: 0 0 auto;
-  width: 100%;
-  display: flex;
-  margin-top: 12px;
-  align-items: center;
-  margin-bottom: 12px;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-.home-button {
+.sign-in-button {
   color: #ffffff;
   margin-left: 12px;
   background-color: #000000;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  transition-duration: 0.5s;
 }
-.home-form1 {
+.sign-in-button:hover {
+  background-color: #222222;
+  cursor:pointer;
+}
+.sign-in-form1 {
   width: 100%;
   margin-bottom: 12px;
 }
-.home-container10 {
+.sign-in-container09 {
   flex: 0 0 auto;
   width: 100%;
   display: flex;
@@ -147,11 +152,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.home-button1 {
-  color: #ffffff;
-  background-color: #000000;
-}
-.home-container11 {
+.sign-in-container10 {
   flex: 0 0 auto;
   width: 100%;
   height: 200px;
@@ -161,7 +162,7 @@
   flex-direction: row;
   justify-content: center;
 }
-.home-image1 {
+.sign-in-image1 {
   width: 100px;
   object-fit: cover;
 }
