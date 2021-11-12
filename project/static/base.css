@@ -1,0 +1,188 @@
+body {
+    font-family: arial;
+    background: black;
+    background-image: url("assets/walkway.png");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.base-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+}
+
+.base-container1 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.base-container2 {
+    flex: 0 0 auto;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    height: 80px;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.base-container3 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.base-container4 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #000000;
+    margin-left: 16px;
+    transition-duration: 0.15s;
+}
+
+.base-text1 {
+    color: #ffffff;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.base-form1 {
+    margin-left: 32px;
+    width: auto;
+    height: auto;
+}
+
+.base-button {
+    border: none;
+    padding: 8px;
+    margin-right: 12px;
+    background: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.15s;
+}
+
+.base-button:hover {
+    filter: opacity(70%);
+    cursor: pointer;
+}
+
+.base-button:focus {
+    filter: opacity(85%);
+}
+
+.base-container5 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+}
+
+.base-container6 {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.base-container7 {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.base-text2 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.base-image2 {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-radius: 999px;
+}
+
+.base-form2 {
+    height: 100%;
+}
+
+.base-container8 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.base-button1 {
+    border: none;
+    background: none;
+    background-image: url("assets/draw.png");
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    transition-duration: 0.15s;
+}
+
+.base-button1:hover {
+    filter: opacity(70%);
+    cursor: pointer;
+}
+
+.base-button1:focus {
+    filter: opacity(85%);
+}
+
+.base-button2 {
+    border: none;
+    background: none;
+    background-size: contain;
+    background-image: url("assets/logout.png");
+    width: 15px;
+    height: 15px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    transition-duration: 0.15s;
+}
+
+.base-button2:hover {
+    filter: opacity(70%);
+    cursor: pointer;
+}
+
+.base-button2:focus {
+    filter: opacity(85%);
+}

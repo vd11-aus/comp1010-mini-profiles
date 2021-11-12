@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | UNSW Mini-Profiles</title>
+</head>
+
+<body>
+    <link href="{{ url_for('static',filename='randomurl.css') }}" rel="stylesheet" />
+    <div class="randomurl-container">
+        <div class="randomurl-container1">
+            <img src="{{ url_for('static',filename='assets/error.png')
+                        }}" alt="image" class="randomurl-image" />
+            <span class="randomurl-text">Page Not Found</span>
+            <span class="randomurl-text1">
+                        We couldn&apos;t locate the page: &quot;{{url}}&quot; that you were searching 
+                        for. Please go back to the previous page or press the button below to be 
+                        redirected to the sign in where you can enter!
+                    </span>
+            <form class="randomurl-form" method="post">
+                <div class="randomurl-container2">
+                    <input type="submit" name="return" class="randomurl-button1 button" value="Redirect Me">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

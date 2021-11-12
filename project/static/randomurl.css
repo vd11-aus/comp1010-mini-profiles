@@ -1,0 +1,84 @@
+body {
+    font-family: arial;
+    margin: 0;
+    padding: 0;
+    background: #1a1a1a;
+}
+
+.randomurl-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1a1a1a;
+    position: fixed;
+}
+
+.randomurl-container1 {
+    flex: 0 0 auto;
+    width: 375px;
+    display: flex;
+    padding: 32px;
+    position: fixed;
+    align-items: center;
+    border-radius: 16px;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #2b2b2b;
+    transition-duration: 0.15s;
+}
+
+.randomurl-image {
+    width: 100px;
+    object-fit: cover;
+    margin-bottom: 24px;
+    transition-duration: 0.15s;
+}
+
+.randomurl-text {
+    color: #ffffff;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.randomurl-text1 {
+    color: #c5c5c5;
+    margin-bottom: 48px;
+}
+
+.randomurl-form {
+    width: 100%;
+    align-self: center;
+}
+
+.randomurl-container2 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.randomurl-button1 {
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    transition-duration: 0.15s;
+}
+
+.randomurl-button1:hover {
+    filter: opacity(70%);
+    cursor: pointer;
+}
+
+.randomurl-button1:focus {
+    filter: opacity(85%);
+}

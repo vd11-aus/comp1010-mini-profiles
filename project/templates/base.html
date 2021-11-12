@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | UNSW Mini-Profiles</title>
+</head>
+
+<body>
+    <div>
+        <link href="{{ url_for('static',filename='base.css') }}" rel="stylesheet" />
+        <div class="base-container">
+            <div class="base-container1">
+                {% block content %}{% endblock %}
+                <div class="base-container2">
+                    <div class="base-container3">
+                        <div class="base-container4">
+                            <span class="base-text1">Mini-Profiles</span>
+                        </div>
+                        <form class="base-form1" method="post">
+                            <div class="base-container5">
+                                <input type="submit" class="base-button button" name="home" value="Home">
+                                <input type="submit" class="base-button button" name="viewstudent" value="View Student">
+                                <input type="submit" class="base-button button" name="searchbyclass" value="Search By Class">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="base-container6">
+                        <div class="base-container7">
+                            <span class="base-text2">{{name}}</span>
+                            <span>{{zid}}</span>
+                        </div>
+                        <img src="{{ url_for('static',filename='assets/profile-user.png') }}" alt="image" class="base-image2" />
+                        <form class="base-form2" method="post">
+                            <div class="base-container8">
+                                <input type="submit" name="settings" class="base-button1 button" value="">
+                                <input type="submit" name="logout" class="base-button2 button" value="">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

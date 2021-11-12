@@ -1,78 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account | UNSW Mini-Profiles</title>
 </head>
+
 <body>
-    <div>
-        <link href="{{ url_for('static',filename='styles/createaccount.css') }}" rel="stylesheet" type= "text/css" />
-        <div class="create-account-container">
-          <div class="create-account-container1">
-            <img
-            src="{{ url_for('static',filename='assets/unsw_garden_party.jpg') }}"
-              alt="image"
-              class="create-account-image"
-            />
-            <div class="create-account-container2">
-              <form class="create-account-form" method="post">
-                <input type="submit" name="cancelcreateaccount" class="create-account-button button" value = "Cancel">
-              </form>
-              <form class="create-account-form1" method="post">
-                <div class="create-account-container3">
-                  <span class="create-account-text03">Create an Account</span>
-                  <span class="create-account-text04">
-                    <span>
-                      Please use your zID from UNSW to create an account. Also make
-                      sure you have a password that meets the following criteria:
-                    </span>
-                    <br />
-                    <span></span>
-                    <br />
-                    <span>- 8 or more characters</span>
-                    <br />
-                    <span>- at least 1 lower case and upper case letter</span>
-                    <br />
-                    <span>- 1 or more numbers</span>
-                  </span>
-                </div>
-                <div class="create-account-container4">
-                  <span class="create-account-text14">zID:</span>
-                  <input
-                    name="zid"
-                    type="text"
-                    placeholder="ie. z1234567"
-                    class="create-account-textinput input"
-                    required="required"
-                  />
-                </div>
-                <div class="create-account-container5">
-                  <span class="create-account-text15">Password:</span>
-                  <input
-                    name="password"
-                    type="password"
-                    placeholder="ie. Password123"
-                    class="create-account-textinput input"
-                    required="required"
-                  />
-                </div>
-                <div class="create-account-container6">
-                  <span class="create-account-text16">Confirm Password:</span>
-                  <input
-                    name="confirmpassword"
-                    type="password"
-                    placeholder="ie. Password123"
-                    class="create-account-textinput input"
-                    required="required"
-                  />
-                </div>
-                <input type="submit" name="confirmcreateaccount" class="create-account-button1 button" value = "Create Account">
-              </form>
+    <link href="{{ url_for('static',filename='createaccount.css') }}" rel="stylesheet" type="text/css" />
+    <div class="create-account-container1">
+        <form class="create-account-form1" method="post">
+            <div class="create-account-container3">
+                <span class="create-account-text03">Create an Account</span>
+                <span class="create-account-text04">
+                <span>
+                    Please use your zID from UNSW to create an account. Also make
+                    sure you have a password that meets the following criteria:
+                </span>
+                <br />
+                <span></span>
+                <br />
+                <span>- 8 or more characters</span>
+                <br />
+                <span>- at least 1 lower case and upper case letter</span>
+                <br />
+                <span>- 1 or more numbers</span>
+                </span>
             </div>
-          </div>
-        </div>
-      </div>      
+            <div class="create-account-container4">
+                <span class="create-account-text14">zID:</span>
+                <input name="zid" type="text" placeholder="ie. z1234567" class="create-account-textinput input" required="required" />
+            </div>
+            <div class="create-account-container5">
+                <span class="create-account-text15">Password:</span>
+                <input name="password" type="password" placeholder="ie. Password123" class="create-account-textinput input" required="required" />
+            </div>
+            <div class="create-account-container6">
+                <span class="create-account-text16">Confirm Password:</span>
+                <input name="confirmpassword" type="password" placeholder="ie. Password123" class="create-account-textinput input" required="required" />
+            </div>
+            <div class="create-account-container7">
+                <input type="submit" name="confirmcreateaccount" class="create-account-button1 button" value="Create Account">
+            </div>
+        </form>
+        <form class="create-account-form" method="post">
+            <div class="create-account-container8">
+                <input type="submit" name="cancelcreateaccount" class="create-account-button button" value="Cancel">
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>

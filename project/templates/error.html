@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{errortitle}} | UNSW Mini-Profiles</title>
 </head>
+
 <body>
-    <div>
-        <link href="{{ url_for('static',filename='styles/error.css') }}" rel="stylesheet" />
-        <div class="error-container">
-          <div class="error-container1">
-            <img
-              src="{{ url_for('static',filename='assets/campus_photo.jpg') }}"
-              alt="image"
-              class="error-image"
-            />
+    <link href="{{ url_for('static',filename='error.css') }}" rel="stylesheet" />
+    <div class="error-container">
+        <div class="error-container1">
             <div class="error-container2">
-              <span class="error-text">Error: {{errornumber}}</span>
-              <span class="error-text1">
-                <span>
-                  {{errormessage}}
-                </span>
-              </span>
-              <form method="post"><input type="submit" name="goback" class="error-button button" value="Go Back"></form>
+                <span class="error-text">Error: {{errornumber}}</span>
+                <span class="error-text1">
+                        {{errormessage}} Click the button below to be sent to the &quot;{{redirectpath}}&quot; page.
+                    </span>
+                <form method="post">
+                    <input type="submit" name="redirectme" class="error-button button" value="Redirect Me">
+                </form>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 </body>
+
 </html>

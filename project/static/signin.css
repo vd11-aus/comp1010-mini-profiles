@@ -1,0 +1,188 @@
+body {
+    font-family: arial;
+    background: black;
+    background-image: url("assets/unsw_campus.jpg");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.sign-in-container01 {
+    flex: 0 0 auto;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    right: 0px;
+    top: 0px;
+}
+
+.sign-in-container02 {
+    flex: 0 0 auto;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sign-in-container03 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-self: center;
+    align-items: flex-start;
+}
+
+.sign-in-container04 {
+    flex: 0 0 auto;
+    width: 400px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sign-in-container05 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+    padding: 16px;
+    justify-content: center;
+    background-color: #000000;
+    transition-duration: 0.15s;
+}
+
+.sign-in-text {
+    color: #ffffff;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.sign-in-text1 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.sign-in-form {
+    width: 100%;
+}
+
+.sign-in-container06 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.sign-in-text2 {
+    font-style: normal;
+    font-weight: 600;
+    margin-right: 12px;
+}
+
+.sign-in-textinput {
+    width: 275px;
+    height: 30px;
+    padding-left: 10px;
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    transition-duration: 0.15s;
+}
+
+.sign-in-container07 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.sign-in-text3 {
+    font-style: normal;
+    font-weight: 600;
+    margin-right: 12px;
+}
+
+.sign-in-container08 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.sign-in-button {
+    color: #ffffff;
+    margin-left: 12px;
+    background-color: #000000;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    transition-duration: 0.15s;
+}
+
+.sign-in-button:hover {
+    filter: opacity(70%);
+    cursor: pointer;
+}
+
+.sign-in-button:focus {
+    filter: opacity(85%);
+}
+
+.sign-in-form1 {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.sign-in-container09 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sign-in-container10 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sign-in-image1 {
+    width: 100px;
+    object-fit: cover;
+}

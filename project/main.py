@@ -42,6 +42,7 @@ def create_user(zid, password):
 
 @app.route("/", methods=["GET", "POST"])
 def signin():
+    session["currentuser"] = ""
     if request.method == "POST":
         if "signin" in request.form:
             credentials_grab = fs_link.collection("credentials").document(request.form["zid"]).get()
@@ -49,6 +50,7 @@ def signin():
                 credentials_dict = credentials_grab.to_dict()
                 if credentials_dict["password"] != request.form["password"]:
                     return redirect(url_for("error", reasoncode = "100", previouspage = "signin"))
+                session["currentuser"] = request.form["zid"]
                 return redirect(url_for("home"))
             else:
                 return redirect(url_for("error", reasoncode = "101", previouspage = "signin"))
@@ -58,6 +60,7 @@ def signin():
 
 @app.route("/create-account", methods=["GET", "POST"])
 def createaccount():
+    session["currentuser"] = ""
     if request.method == "POST":
         if "cancelcreateaccount" in request.form:
             return redirect(url_for("signin"))
@@ -96,12 +99,57 @@ def createaccount():
 
 @app.route("/home", methods=["GET", "POST"])
 def home():
-    return "Welcome back!"
+    if session["currentuser"] == "":
+        return redirect(url_for("error", reasoncode = "900", previouspage = "signin"))
+    profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
+    if profile_data_grab.exists:
+        profile_data = profile_data_grab.to_dict()
+    profile_name = profile_data["name"]
+    newsfeed_data_grab = fs_link.collection("other").document("newsfeed").get()
+    if newsfeed_data_grab.exists:
+        newsfeed_data = newsfeed_data_grab.to_dict()["articlelist"]
+        flipped_data = newsfeed_data[::-1]
+        newest_to_oldest = flipped_data[0:11]
+    if request.method == "POST":
+        if "logout" in request.form:
+            session["currentuser"] = ""
+            return redirect(url_for("signin"))
+        if "settings" in request.form:
+            return redirect(url_for("settings"))
+        if "home" in request.form:
+            return redirect(url_for("home"))
+        if "viewstudent" in request.form:
+            return redirect(url_for("viewstudent"))
+        if "searchbyclass" in request.form:
+            return redirect(url_for("searchbyclass"))
+    return render_template("home.html", name = profile_name, zid = session["currentuser"], newsfeed = newest_to_oldest)
+
+@app.route("/settings", methods=["GET", "POST"])
+def settings():
+    if session["currentuser"] == "":
+        return redirect(url_for("error", reasoncode = "900", previouspage = "signin"))
+    profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
+    if profile_data_grab.exists:
+        profile_data = profile_data_grab.to_dict()
+    profile_name = profile_data["name"]
+    if request.method == "POST":
+        if "logout" in request.form:
+            session["currentuser"] = ""
+            return redirect(url_for("signin"))
+        if "settings" in request.form:
+            return redirect(url_for("settings"))
+        if "home" in request.form:
+            return redirect(url_for("home"))
+        if "viewstudent" in request.form:
+            return redirect(url_for("viewstudent"))
+        if "searchbyclass" in request.form:
+            return redirect(url_for("searchbyclass"))
+    return render_template("settings.html", name = profile_name, zid = session["currentuser"])
 
 @app.route("/error/<reasoncode>-from-<previouspage>", methods=["GET", "POST"])
 def error(reasoncode, previouspage):
     if request.method == "POST":
-        if "goback" in request.form:
+        if "redirectme" in request.form:
             return redirect(url_for(previouspage))
     error_directory_grab = fs_link.collection("other").document("errordirectory").get()
     if error_directory_grab.exists:
@@ -111,7 +159,13 @@ def error(reasoncode, previouspage):
     error_directory = read_json("error-list")
     title = error_directory[reasoncode]["title"]
     reason = error_directory[reasoncode]["reason"]
-    return render_template("error.html", errortitle = title, errornumber = reasoncode, errormessage = reason)
+    return render_template("error.html", errortitle = title, errornumber = reasoncode, errormessage = reason, redirectpath = previouspage)
+
+@app.route("/<randomurl>", methods=["GET", "POST"])
+def nothingfound(randomurl):
+    if request.method == "POST":
+        return redirect(url_for("signin"))
+    return render_template("randomurl.html", url = randomurl)
 
 if __name__ == "__main__":
     app.run(debug=True)

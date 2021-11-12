@@ -1,89 +1,81 @@
 body {
     font-family: arial;
-  }
-.create-account-container {
-    width: 100%;
-    display: flex;
-    overflow: auto;
-    min-height: 100vh;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .create-account-container1 {
-    flex: 0 0 auto;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-self: center;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-end;
-    background-color: #ffffff;
-  }
-  .create-account-image {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    object-fit: cover;
-  }
-  .create-account-container2 {
+    background: black;
+    background-image: url("assets/unsw_garden_party.jpg");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.create-account-container1 {
     flex: 0 0 auto;
     width: 50%;
     height: 100%;
     display: flex;
-    position: relative;
+    position: fixed;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.9);
-  }
-  .create-account-form {
-    width: 48vw;
-    bottom: .5vw;
-    position: absolute;
-  }
-  .create-account-button {
+    right: 0px;
+    top: 0px;
+}
+
+.create-account-form {
+    margin-top: 12px;
+    width: 400px;
+}
+
+.create-account-button {
     color: #ffffff;
-    width: 100%;
     text-align: center;
     background-color: #000000;
     border-radius: 5px;
     padding: 10px;
     border: none;
-    transition-duration: 0.5s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
-  .create-account-button:hover {
-    background-color: #222222;
-    cursor:pointer;
-  }
-  .create-account-text02 {
+    transition-duration: 0.15s;
+}
+
+.create-account-button:hover {
+    filter: opacity(70%);
+    cursor: pointer;
+}
+
+.create-account-button:focus {
+    filter: opacity(85%);
+}
+
+.create-account-text02 {
     color: #ffffff;
     background-color: #000000;
-  }
-  .create-account-form1 {
+}
+
+.create-account-form1 {
     width: 400px;
     position: relative;
-  }
-  .create-account-container3 {
+}
+
+.create-account-container3 {
     flex: 0 0 auto;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-  }
-  .create-account-text03 {
+}
+
+.create-account-text03 {
     font-size: 36px;
     font-style: normal;
     font-weight: 600;
-  }
-  .create-account-text04 {
-    margin-top: 12px;
     margin-bottom: 12px;
-  }
-  .create-account-container4 {
+}
+
+.create-account-text04 {
+    margin-bottom: 12px;
+}
+
+.create-account-container4 {
     flex: 0 0 auto;
     width: 100%;
     display: flex;
@@ -91,13 +83,15 @@ body {
     align-items: center;
     flex-direction: row;
     justify-content: flex-end;
-  }
-  .create-account-text14 {
+}
+
+.create-account-text14 {
     font-style: normal;
     font-weight: 600;
     margin-right: 12px;
-  }
-  .create-account-textinput {
+}
+
+.create-account-textinput {
     width: 225px;
     height: 30px;
     padding-left: 10px;
@@ -105,8 +99,10 @@ body {
     color: #ffffff;
     border: none;
     border-radius: 5px;
-  }
-  .create-account-container5 {
+    transition-duration: 0.15s;
+}
+
+.create-account-container5 {
     flex: 0 0 auto;
     width: 100%;
     display: flex;
@@ -114,13 +110,15 @@ body {
     align-items: center;
     flex-direction: row;
     justify-content: flex-end;
-  }
-  .create-account-text15 {
+}
+
+.create-account-text15 {
     font-style: normal;
     font-weight: 600;
     margin-right: 12px;
-  }
-  .create-account-container6 {
+}
+
+.create-account-container6 {
     flex: 0 0 auto;
     width: 100%;
     display: flex;
@@ -128,26 +126,48 @@ body {
     align-items: center;
     flex-direction: row;
     justify-content: flex-end;
-  }
-  .create-account-text16 {
+}
+
+.create-account-container7 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.create-account-container8 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.create-account-text16 {
     text-align: right;
     font-style: normal;
     font-weight: 600;
     margin-right: 12px;
-  }
-  .create-account-button1 {
+}
+
+.create-account-button1 {
     color: #ffffff;
-    width: 100%;
-    margin-top: 24px;
+    margin-top: 12px;
     background-color: #000000;
     border-radius: 5px;
     padding: 10px;
     border: none;
-    transition-duration: 0.5s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
-  .create-account-button1:hover {
-    background-color: #222222;
-    cursor:pointer;
-  }
-  
+    transition-duration: 0.15s;
+}
+
+.create-account-button1:hover {
+    filter: opacity(70%);
+    cursor: pointer;
+}
+
+.create-account-button1:focus {
+    filter: opacity(85%);
+}
