@@ -110,6 +110,10 @@ body {
     transition-duration: 0.15s;
 }
 
+.sign-in-textinput:focus {
+    background-color: #505050;
+}
+
 .sign-in-container07 {
     flex: 0 0 auto;
     width: 100%;

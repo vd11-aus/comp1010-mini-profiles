@@ -1,135 +1,23 @@
-.settings-container {
-    width: 100%;
-    display: flex;
-    overflow: auto;
-    min-height: 100vh;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.settings-form {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-}
-
-.settings-button {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: rgba(0, 0, 0, 0.75);
-}
-
-.settings-button:hover {
-    cursor: pointer;
-}
-
 .settings-container1 {
+    top: 0px;
     flex: 0 0 auto;
-    right: 20px;
-    width: 300px;
-    bottom: 100px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 60px;
+    padding-top: 120px;
+    height: auto;
     display: flex;
-    padding: 32px;
     position: fixed;
-    align-items: center;
-    border-radius: 16px;
-    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.settings-text {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    margin-bottom: 24px;
-}
-
-.settings-form1 {
-    width: 100%;
-}
-
-.settings-container2 {
-    flex: 0 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: stretch;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-.settings-button1 {
-    color: #ffffff;
-    background-color: #000000;
-    border-radius: 5px;
-    padding: 10px;
-    border: none;
-    transition-duration: 0.15s;
-    margin-bottom: 12px;
-}
-
-.settings-button1:hover {
-    filter: opacity(80%);
-    cursor: pointer;
-}
-
-.settings-button1:focus {
-    filter: opacity(90%);
-}
-
-.settings-button2 {
-    color: #ffffff;
-    background-color: #000000;
-    border-radius: 5px;
-    padding: 10px;
-    border: none;
-    transition-duration: 0.15s;
-    margin-bottom: 12px;
-}
-
-.settings-button2:hover {
-    filter: opacity(80%);
-    cursor: pointer;
-}
-
-.settings-button2:focus {
-    filter: opacity(90%);
-}
-
-.settings-button3 {
-    color: #ffffff;
-    background-color: #000000;
-    border-radius: 5px;
-    padding: 10px;
-    border: none;
-    transition-duration: 0.15s;
-    margin-bottom: 12px;
-}
-
-.settings-button3:hover {
-    filter: opacity(80%);
-    cursor: pointer;
-}
-
-.settings-button3:focus {
-    filter: opacity(90%);
-}
-
-.settings-button4 {
-    color: #ffffff;
-    background-color: #000000;
-    border-radius: 5px;
-    padding: 10px;
-    border: none;
-    transition-duration: 0.15s;
-}
-
-.settings-button4:hover {
-    filter: opacity(80%);
-    cursor: pointer;
-}
-
-.settings-button4:focus {
-    filter: opacity(90%);
+.settings-text1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
 }

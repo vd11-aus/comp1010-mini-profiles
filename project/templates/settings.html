@@ -1,19 +1,6 @@
 {% extends "base.html" %} {% block title %}Settings{% endblock %} {% block content %}
 <link href="{{ url_for('static',filename='settings.css') }}" rel="stylesheet" />
-<div class="settings-container">
-    <form class="settings-form">
-        <input type="submit" name="backtomenu" class="settings-button button" value="">
-    </form>
-    <div class="settings-container1">
-        <span class="settings-text">Settings</span>
-        <form class="settings-form1" method="post">
-            <div class="settings-container2">
-                <input type="submit" name="viewrofile" class="settings-button1 button" value="View Profile">
-                <input type="submit" name="editprofile" class="settings-button2 button" value="Edit Profile">
-                <input type="submit" name="changepassword" class="settings-button3 button" value="Change Password">
-                <input type="submit" name="changepassword" class="settings-button4 button" value="Return to Home">
-            </div>
-        </form>
-    </div>
+<div class="settings-container1">
+    <span class="settings-text1">Settings</span>
 </div>
 {% endblock %}

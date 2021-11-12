@@ -82,11 +82,11 @@ body {
     margin-right: 12px;
     background: none;
     font-size: 18px;
-    font-weight: bold;
     transition-duration: 0.15s;
 }
 
 .base-button:hover {
+    font-weight: bold;
     filter: opacity(70%);
     cursor: pointer;
 }
