@@ -1,76 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In | UNSW Mini-Profiles</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | UNSW Mini-Profiles</title>
 </head>
+
 <body>
-  <div>
-    <link href="{{ url_for('static',filename='styles/signin.css') }}" rel="stylesheet" type= "text/css" />
+    <link href="{{ url_for('static',filename='signin.css') }}" rel="stylesheet" type="text/css" />
     <div class="sign-in-container">
-      <div class="sign-in-container01">
-        <img
-        src="{{ url_for('static',filename='assets/unsw_campus.jpg') }}"
-          alt="image"
-          class="sign-in-image"
-        />
-        <div class="sign-in-container02">
-          <div class="sign-in-container03"></div>
-          <div class="sign-in-container04">
-            <div class="sign-in-container05">
-              <span class="sign-in-text">Mini-Profiles</span>
+        <div class="sign-in-container01">
+            <div class="sign-in-container02">
+                <div class="sign-in-container03"></div>
+                <div class="sign-in-container04">
+                    <div class="sign-in-container05">
+                        <span class="sign-in-text">Mini-Profiles</span>
+                    </div>
+                    <span class="sign-in-text1">
+                                Mini-Profiles is a UNSW Project created by Vietlan Dinh. The aim of
+                                the project is to create an online database system where UNSW
+                                students can create and share profiles online which can be used by
+                                others to aid in finding suitable group members for group assignments.
+                            </span>
+                    <form class="sign-in-form" method="post">
+                        <div class="sign-in-container06">
+                            <label class="sign-in-text2">zID:</label>
+                            <input name="zid" type="text" placeholder="zID" class="sign-in-textinput input" required="required" />
+                        </div>
+                        <div class="sign-in-container07">
+                            <label class="sign-in-text3">Password:</label>
+                            <input name="password" type="password" placeholder="Password" class="sign-in-textinput input" required="required" />
+                        </div>
+                        <div class="sign-in-container08">
+                            <input type="submit" name="signin" class="sign-in-button button" value="Sign In">
+                        </div>
+                    </form>
+                    <form class="sign-in-form1" method="post">
+                        <div class="sign-in-container09">
+                            <input type="submit" name="createaccount" class="sign-in-button button" value="Create Account">
+                        </div>
+                    </form>
+                </div>
+                <div class="sign-in-container10">
+                    <img alt="image" src="{{ url_for('static',filename='assets/unsw_logo.png')}}" class="sign-in-image1" />
+                </div>
             </div>
-            <span class="sign-in-text1">
-              Mini-Profiles is a UNSW Project created by Vietlan Dinh. The aim of
-              the project is to create an online database system where UNSW
-              students can create and share profiles online which can be used by
-              others to aid in finding suitable group members for group
-              assignments.
-            </span>
-            <form class="sign-in-form" method="post">
-              <div class="sign-in-container06">
-                <label class="sign-in-text2">zID:</label>
-                <input
-                  name="zid"
-                  type="text"
-                  placeholder="zID"
-                  class="sign-in-textinput input"
-                  required="required"
-                />
-              </div>
-              <div class="sign-in-container07">
-                <label class="sign-in-text3">Password:</label>
-                <input
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  class="sign-in-textinput input"
-                  required="required"
-                />
-              </div>
-              <div class="sign-in-container08">
-                <input type="submit" name="signin" class="sign-in-button button" value = "Sign In">
-              </div>
-            </form>
-            <form class="sign-in-form1" method="post">
-              <div class="sign-in-container09">
-                <input type="submit" name="createaccount" class="sign-in-button button" value="Create Account">
-              </div>
-            </form>
-          </div>
-          <div class="sign-in-container10">
-            <img
-              alt="image"
-              src="{{ url_for('static',filename='assets/unsw_logo.png') }}"
-              class="sign-in-image1"
-            />
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  
 </body>
+
 </html>
