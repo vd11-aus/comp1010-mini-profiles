@@ -4,13 +4,17 @@ import os.path
 import firebase_admin
 from firebase_admin import *
 from firebase_admin import firestore
-from firebase_admin import db
+from firebase_admin import storage
 import string
+import time
 
 cred = credentials.Certificate("other-files\miniprofiles-801b3-firebase-adminsdk-a02t1-8cb3692aa2.json")
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(cred, {
+    "storageBucket": "miniprofiles-801b3.appspot.com"
+})
 
 fs_link = firestore.client()
+st_link = storage.bucket()
 
 app = Flask(__name__)
 
@@ -32,14 +36,30 @@ def create_user(zid, password):
         "zId": zid,
         "password": password
     }
+    storage.bucket().blob(f"icons/{zid}.png").upload_from_filename(r"project/static/assets/unsw_logo.png")
     profile_data = {
         "name": "",
         "gender": "",
-        "aboutMe": "",
+        "aboutMe": ""
     }
     fs_link.collection("credentials").document(zid).set(credentials_data)
     fs_link.collection("profiles").document(zid).set(profile_data)
 
+def upload_image():
+    print("Apple")
+
+def save_profile(name, gender, aboutme):
+    profile_data = {
+        "name": name,
+        "gender": gender,
+        "aboutMe": aboutme
+    }
+    fs_link.collection("profiles").document(session["currentuser"]).set(profile_data)
+
+def save_courses():
+    print("Apple")
+
+# INCOMPLETE - SIGN IN
 @app.route("/", methods=["GET", "POST"])
 def signin():
     session["currentuser"] = ""
@@ -50,6 +70,8 @@ def signin():
                 credentials_dict = credentials_grab.to_dict()
                 if credentials_dict["password"] != request.form["password"]:
                     return redirect(url_for("error", reasoncode = "100", previouspage = "signin"))
+                # zid = request.form["zid"]
+                # storage.bucket().blob(f"icons/{zid}.png").download_to_filename(r"project/static/assets/actual-profile-user.png")
                 session["currentuser"] = request.form["zid"]
                 return redirect(url_for("home"))
             else:
@@ -58,6 +80,7 @@ def signin():
             return redirect(url_for("createaccount"))
     return render_template("signin.html")
 
+# COMPLETE - CREATE ACCOUNT
 @app.route("/create-account", methods=["GET", "POST"])
 def createaccount():
     session["currentuser"] = ""
@@ -97,6 +120,7 @@ def createaccount():
             return redirect(url_for("signin"))
     return render_template("createaccount.html")
 
+# COMPLETE - HOME
 @app.route("/home", methods=["GET", "POST"])
 def home():
     if session["currentuser"] == "":
@@ -104,7 +128,6 @@ def home():
     profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
     if profile_data_grab.exists:
         profile_data = profile_data_grab.to_dict()
-    profile_name = profile_data["name"]
     newsfeed_data_grab = fs_link.collection("other").document("newsfeed").get()
     if newsfeed_data_grab.exists:
         newsfeed_data = newsfeed_data_grab.to_dict()["articlelist"]
@@ -120,10 +143,11 @@ def home():
             return redirect(url_for("home"))
         if "viewstudent" in request.form:
             return redirect(url_for("viewstudent"))
-        if "searchbyclass" in request.form:
+        if "searchbycourse" in request.form:
             return redirect(url_for("searchbyclass"))
-    return render_template("home.html", name = profile_name, zid = session["currentuser"], newsfeed = newest_to_oldest)
+    return render_template("home.html", name = profile_data["name"], zid = session["currentuser"], newsfeed = newest_to_oldest)
 
+# INCOMPLETE - SETTINGS
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
     if session["currentuser"] == "":
@@ -131,7 +155,11 @@ def settings():
     profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
     if profile_data_grab.exists:
         profile_data = profile_data_grab.to_dict()
-    profile_name = profile_data["name"]
+    course_data_grab = fs_link.collection("other").document("courses").get()
+    if course_data_grab.exists:
+        course_data = course_data_grab.to_dict()["courses"]
+    all_genders = ["Undisclosed", "Male", "Female", "Other"]
+    all_genders.remove(profile_data["gender"])
     if request.method == "POST":
         if "logout" in request.form:
             session["currentuser"] = ""
@@ -142,10 +170,42 @@ def settings():
             return redirect(url_for("home"))
         if "viewstudent" in request.form:
             return redirect(url_for("viewstudent"))
-        if "searchbyclass" in request.form:
+        if "searchbycourse" in request.form:
             return redirect(url_for("searchbyclass"))
-    return render_template("settings.html", name = profile_name, zid = session["currentuser"])
+        if "uploadimage" in request.form:
+            upload_image()
+            return redirect(url_for("home"))
+        if "saveprofile" in request.form:
+            save_profile(request.form["profilename"], request.form["profilegender"], request.form["profileaboutme"])
+            return redirect(url_for("home"))
+        if "savecourses" in request.form:
+            save_courses()
+            return redirect(url_for("home"))
+    return render_template("settings.html", name = profile_data["name"], zid = session["currentuser"], aboutme = profile_data["aboutMe"], gender = profile_data["gender"], genderlist = all_genders, courselist = course_data)
 
+# INCOMPLETE - VIEW STUDENT
+@app.route("/viewstudent", methods=["GET", "POST"])
+def viewstudent():
+    if session["currentuser"] == "":
+        return redirect(url_for("error", reasoncode = "900", previouspage = "signin"))
+    profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
+    if profile_data_grab.exists:
+        profile_data = profile_data_grab.to_dict()
+    if request.method == "POST":
+        if "logout" in request.form:
+            session["currentuser"] = ""
+            return redirect(url_for("signin"))
+        if "settings" in request.form:
+            return redirect(url_for("settings"))
+        if "home" in request.form:
+            return redirect(url_for("home"))
+        if "viewstudent" in request.form:
+            return redirect(url_for("viewstudent"))
+        if "searchbycourse" in request.form:
+            return redirect(url_for("searchbyclass"))
+    return render_template("viewstudent.html", name = profile_data["name"], zid = session["currentuser"])
+
+# INCOMPLETE - ERROR PAGE
 @app.route("/error/<reasoncode>-from-<previouspage>", methods=["GET", "POST"])
 def error(reasoncode, previouspage):
     if request.method == "POST":
@@ -161,6 +221,7 @@ def error(reasoncode, previouspage):
     reason = error_directory[reasoncode]["reason"]
     return render_template("error.html", errortitle = title, errornumber = reasoncode, errormessage = reason, redirectpath = previouspage)
 
+# COMPLETE - SIGN IN
 @app.route("/<randomurl>", methods=["GET", "POST"])
 def nothingfound(randomurl):
     if request.method == "POST":

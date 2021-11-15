@@ -1,6 +1,64 @@
 {% extends "base.html" %} {% block title %}Settings{% endblock %} {% block content %}
 <link href="{{ url_for('static',filename='settings.css') }}" rel="stylesheet" />
-<div class="settings-container1">
-    <span class="settings-text1">Settings</span>
+<div class="settings-container">
+    <div class="settings-container1">
+        <span class="settings-text1">Settings</span>
+    </div>
+    <div class="horizontal">
+        <div class="settings-container2">
+            <form method="post">
+                <span class="settings-text2">Current User Icon:</span>
+                <br>
+                <br>
+                <img src="{{ url_for('static',filename='assets/actual-profile-user.png') }}" alt="image" class="settings-image" />
+                <br>
+                <br>
+                <div class="settings-container3">
+                    <input type="file" class="input-file-image" accept="image/png, image/jpeg" name="usericon" id="usericon" />
+                    <input type="submit" class="settings-button1 button" name="uploadimage" value="Upload To Server" />
+                </div>
+            </form>
+        </div>
+        <div class="divider"></div>
+        <div class="settings-container4">
+            <form method="post">
+                <div class="settings-container5">
+                    <span class="settings-text2">Name:</span>
+                    <input type="text" name="profilename" placeholder="Your Name" class="settings-textinput input" required="required" value="{{name}}" />
+                </div>
+                <div class="settings-container5">
+                    <span class="settings-text2">Gender:</span>
+                    <select name="profilegender" id="profilegender">
+                        <option value="{{gender}}" selected>{{gender}}</option>
+                        {% for othergender in genderlist %}
+                        <option value="{{othergender}}">{{othergender}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="settings-container7">
+                    <span class="settings-text2">About Me:</span>
+                    <textarea name="profileaboutme" placeholder="About me ..." class="settings-textarea" required="required">{{aboutme}}</textarea>
+                </div>
+                <div class="settings-container6">
+                    <input type="submit" class="settings-button1 button" name="saveprofile" value="Save" />
+                    <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
+                </div>
+            </form>
+        </div>
+        <div class="divider"></div>
+        <div class="settings-container4">
+            <span class="settings-text3">My Courses:</span>
+            <form method="post">
+                {% for course in courselist %}
+                <input type="checkbox" id="{{course}}" name="{{course}}" value="{{course}}">
+                <label for="{{course}}">{{course}}</label>
+                <br> {% endfor %}
+                <div class="settings-container8">
+                    <input type="submit" class="settings-button1 button" name="savecourses" value="Save" />
+                    <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

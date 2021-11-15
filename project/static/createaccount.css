@@ -27,9 +27,9 @@ body {
 }
 
 .create-account-button {
-    color: #ffffff;
+    color: #000000;
     text-align: center;
-    background-color: #000000;
+    background-color: #cfcfcf;
     border-radius: 5px;
     padding: 10px;
     border: none;
@@ -37,12 +37,12 @@ body {
 }
 
 .create-account-button:hover {
-    filter: opacity(70%);
+    filter: brightness(80%);
     cursor: pointer;
 }
 
 .create-account-button:focus {
-    filter: opacity(85%);
+    filter: brightness(90%);
 }
 
 .create-account-text02 {
