@@ -6,7 +6,7 @@ from firebase_admin import *
 from firebase_admin import firestore
 from firebase_admin import storage
 import string
-import time
+import urllib.request
 
 cred = credentials.Certificate("other-files\miniprofiles-801b3-firebase-adminsdk-a02t1-8cb3692aa2.json")
 firebase_admin.initialize_app(cred, {
@@ -36,28 +36,52 @@ def create_user(zid, password):
         "zId": zid,
         "password": password
     }
-    storage.bucket().blob(f"icons/{zid}.png").upload_from_filename(r"project/static/assets/unsw_logo.png")
+    st_link.blob(f"icons/{zid}.png").upload_from_filename(r"project/static/assets/default-profile-user.png")
     profile_data = {
-        "name": "",
-        "gender": "",
-        "aboutMe": ""
+        "name": "Change Name",
+        "gender": "Undisclosed",
+        "aboutMe": "",
+        "interests": "",
+        "facebook": "",
+        "twitter": "",
+        "instagram": ""
     }
     fs_link.collection("credentials").document(zid).set(credentials_data)
     fs_link.collection("profiles").document(zid).set(profile_data)
 
-def upload_image():
-    print("Apple")
+def update_icon():
+    userid = session["currentuser"]
+    iconreference = st_link.blob(f"icons/{userid}.png").generate_signed_url(datetime.timedelta(seconds=300), method='GET')
+    urllib.request.urlretrieve(iconreference, r"project/static/assets/actual-profile-user.png")
 
-def save_profile(name, gender, aboutme):
+def save_profile(name, gender, aboutme, interests, facebook, twitter, instagram):
     profile_data = {
         "name": name,
         "gender": gender,
-        "aboutMe": aboutme
+        "aboutMe": aboutme,
+        "interests": interests,
+        "facebook": facebook,
+        "twitter": twitter,
+        "instagram": instagram
     }
     fs_link.collection("profiles").document(session["currentuser"]).set(profile_data)
 
-def save_courses():
-    print("Apple")
+def save_courses(selectedcourses):
+    course_data_grab = fs_link.collection("other").document("courses").get()
+    if course_data_grab.exists:
+        course_data = course_data_grab.to_dict()
+    unselectedcourses = []
+    for key in course_data["courses"]:
+        unselectedcourses.append(key)
+    for course in selectedcourses:
+        unselectedcourses.remove(course)
+    for course in selectedcourses:
+        if course_data["courses"][course]["students"].count(session["currentuser"]) == 0:
+            course_data["courses"][course]["students"].append(session["currentuser"])
+    for course in unselectedcourses:
+        if course_data["courses"][course]["students"].count(session["currentuser"]) > 0:
+            course_data["courses"][course]["students"].remove(session["currentuser"])
+    fs_link.collection("other").document("courses").set(course_data)
 
 # INCOMPLETE - SIGN IN
 @app.route("/", methods=["GET", "POST"])
@@ -70,8 +94,6 @@ def signin():
                 credentials_dict = credentials_grab.to_dict()
                 if credentials_dict["password"] != request.form["password"]:
                     return redirect(url_for("error", reasoncode = "100", previouspage = "signin"))
-                # zid = request.form["zid"]
-                # storage.bucket().blob(f"icons/{zid}.png").download_to_filename(r"project/static/assets/actual-profile-user.png")
                 session["currentuser"] = request.form["zid"]
                 return redirect(url_for("home"))
             else:
@@ -123,6 +145,7 @@ def createaccount():
 # COMPLETE - HOME
 @app.route("/home", methods=["GET", "POST"])
 def home():
+    update_icon()
     if session["currentuser"] == "":
         return redirect(url_for("error", reasoncode = "900", previouspage = "signin"))
     profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
@@ -150,16 +173,21 @@ def home():
 # INCOMPLETE - SETTINGS
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
-    if session["currentuser"] == "":
+    update_icon()
+    userid = session["currentuser"]
+    if userid == "":
         return redirect(url_for("error", reasoncode = "900", previouspage = "signin"))
-    profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
+    profile_data_grab = fs_link.collection("profiles").document(userid).get()
     if profile_data_grab.exists:
         profile_data = profile_data_grab.to_dict()
     course_data_grab = fs_link.collection("other").document("courses").get()
     if course_data_grab.exists:
         course_data = course_data_grab.to_dict()["courses"]
+    enrolledcourses = []
+    for course in course_data:
+        if course_data_grab.to_dict()["courses"][course]["students"].count(userid) > 0:
+            enrolledcourses.append(str(course))
     all_genders = ["Undisclosed", "Male", "Female", "Other"]
-    all_genders.remove(profile_data["gender"])
     if request.method == "POST":
         if "logout" in request.form:
             session["currentuser"] = ""
@@ -173,19 +201,26 @@ def settings():
         if "searchbycourse" in request.form:
             return redirect(url_for("searchbyclass"))
         if "uploadimage" in request.form:
-            upload_image()
-            return redirect(url_for("home"))
+            uploaded_file = request.files["profileicon"]
+            if uploaded_file.filename != "":
+                uploaded_file.save(r"project/static/assets/uploaded-profile-user.png")
+                st_link.blob(f"icons/{userid}.png").upload_from_filename("project/static/assets/uploaded-profile-user.png")
+                return redirect(url_for("home"))
         if "saveprofile" in request.form:
-            save_profile(request.form["profilename"], request.form["profilegender"], request.form["profileaboutme"])
+            save_profile(request.form["profilename"], request.form["profilegender"], request.form["profileaboutme"], request.form["profileinterests"], 
+                request.form["profilefacebook"], request.form["profiletwitter"], request.form["profileinstagram"])
             return redirect(url_for("home"))
         if "savecourses" in request.form:
-            save_courses()
+            save_courses(request.form.getlist("courseselection"))
             return redirect(url_for("home"))
-    return render_template("settings.html", name = profile_data["name"], zid = session["currentuser"], aboutme = profile_data["aboutMe"], gender = profile_data["gender"], genderlist = all_genders, courselist = course_data)
+    return render_template("settings.html", name = profile_data["name"], zid = userid, aboutme = profile_data["aboutMe"], 
+        gender = profile_data["gender"], genderlist = all_genders, facebook = profile_data["facebook"], interests = profile_data["interests"], 
+        twitter = profile_data["twitter"], instagram = profile_data["instagram"], courselist = sorted(course_data), enrolled = enrolledcourses)
 
 # INCOMPLETE - VIEW STUDENT
 @app.route("/viewstudent", methods=["GET", "POST"])
 def viewstudent():
+    update_icon()
     if session["currentuser"] == "":
         return redirect(url_for("error", reasoncode = "900", previouspage = "signin"))
     profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
