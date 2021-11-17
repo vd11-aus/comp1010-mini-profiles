@@ -122,6 +122,15 @@ body {
     justify-content: flex-end;
 }
 
+.settings-container9 {
+    margin-top: 6px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .horizontal {
     display: flex;
     flex-direction: row;
@@ -189,6 +198,10 @@ body {
     background-color: #505050;
 }
 
+.settings-form-check {
+    width: 200px;
+}
+
 .settings-button1 {
     color: #ffffff;
     background-color: #000000;
@@ -224,4 +237,19 @@ body {
 
 .settings-button2:focus {
     filter: brightness(90%);
+}
+
+.settings-link {
+    font-size: 11px;
+    color: #3a3a3a;
+    text-decoration: none;
+}
+
+.settings-link:hover {
+    cursor: pointer;
+    filter: opacity(70%);
+}
+
+.settings-link:hover {
+    filter: opacity(85%);
 }

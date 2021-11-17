@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}Search Results{% endblock %} {% block content %}
+<link href="{{ url_for('static',filename='results.css') }}" rel="stylesheet" />
+<div class="results-container1">
+    <span class="results-text1">Results</span>
+    <span class="results-text2">These students meet the following {{filtertype}} criteria: {{resultcriteria}}</span>
+    <div>
+        {% for student in studentlist %}
+        <span>{{student}}</span> {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -21,7 +21,7 @@
         </div>
         <div class="divider"></div>
         <div class="settings-container4">
-            <form method="post">
+            <form method="post" autocomplete="off">
                 <div class="settings-container5">
                     <span class="settings-text2">Name:</span>
                     <input type="text" name="profilename" placeholder="Your display name" class="settings-textinput input" required="required" value="{{name}}" />
@@ -66,14 +66,41 @@
         </div>
         <div class="divider"></div>
         <div class="settings-container4">
-            <span class="settings-text3">My Courses:</span>
-            <form method="post">
-                {% for course in courselist %} {% if enrolled.count(course) > 0 %}
-                <input type="checkbox" name="courseselection" value="{{course}}" checked>{{course}}
-                <br> {% else %}
-                <input type="checkbox" name="courseselection" value="{{course}}">{{course}}
-                <br> {% endif%} {% endfor %}
-                <div class="settings-container8">
+            <span class="settings-text3">My Strengths:</span>
+            <form method="post" class="settings-form-check">
+                <div style="width: 100%; height: 300px; overflow: auto;">
+                    {% for strength in strengthlist %} {% if userstrengths.count(strength) > 0 %}
+                    <input type="checkbox" name="strengthselection" value="{{strength}}" checked> {{strength}}
+                    <br> {% else %}
+                    <input type="checkbox" name="strengthselection" value="{{strength}}"> {{strength}}
+                    <br> {% endif%} {% endfor %}
+                    <br>
+                </div>
+                <a href=help target="_blank" rel="noreferrer noopener" class="settings-link">Need help? Visit here for more.</a>
+                <br>
+                <br>
+                <div class="settings-container9">
+                    <input type="submit" class="settings-button1 button" name="savestrengths" value="Save" />
+                    <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
+                </div>
+            </form>
+        </div>
+        <div class="divider"></div>
+        <div class="settings-container4">
+            <span class="settings-text3">Course Enrollments:</span>
+            <form method="post" class="settings-form-check">
+                <div style="width: 100%; height: 300px; overflow: auto;">
+                    {% for course in courselist %} {% if enrolled.count(course) > 0 %}
+                    <input type="checkbox" name="courseselection" value="{{course}}" checked> {{course}}
+                    <br> {% else %}
+                    <input type="checkbox" name="courseselection" value="{{course}}"> {{course}}
+                    <br> {% endif%} {% endfor %}
+                    <br>
+                </div>
+                <a href=help target="_blank" rel="noreferrer noopener" class="settings-link">Need help? Visit here for more.</a>
+                <br>
+                <br>
+                <div class="settings-container9">
                     <input type="submit" class="settings-button1 button" name="savecourses" value="Save" />
                     <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
                 </div>
