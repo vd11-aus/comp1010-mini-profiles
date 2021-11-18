@@ -1,110 +1,125 @@
 {% extends "base.html" %} {% block title %}Settings{% endblock %} {% block content %}
 <link href="{{ url_for('static',filename='settings.css') }}" rel="stylesheet" />
-<div class="settings-container">
-    <div class="settings-container1">
-        <span class="settings-text1">Settings</span>
-    </div>
-    <div class="horizontal">
-        <div class="settings-container2">
-            <form method="post" enctype="multipart/form-data">
-                <span class="settings-text2">Current User Icon:</span>
-                <br>
-                <br>
-                <img src="{{ url_for('static',filename='assets/actual-profile-user.png') }}" alt="image" class="settings-image" />
-                <br>
-                <br>
-                <div class="settings-container3">
-                    <input type="file" class="input-file-image" accept="image/png, image/jpeg" name="profileicon" id="profileicon" />
-                    <input type="submit" class="settings-button1 button" name="uploadimage" value="Upload To Server" />
+<div class="settings-background">
+    <div class="settings-container">
+        <div class="settings-header">
+            <div class="settings-container1">
+                <span class="settings-text1">Settings</span>
+            </div>
+            <form method="post">
+                <div class="settings-container11">
+                    <input type="submit" class="settings-button2 button" style="margin-right: 12px;" name="changepassword" value="Change Password" />
+                    <input type="submit" class="settings-button1 button" name="viewprofile" value="View Profile" />
+
                 </div>
             </form>
         </div>
-        <div class="divider"></div>
-        <div class="settings-container4">
-            <form method="post" autocomplete="off">
-                <div class="settings-container5">
-                    <span class="settings-text2">Name:</span>
-                    <input type="text" name="profilename" placeholder="Your display name" class="settings-textinput input" required="required" value="{{name}}" />
-                </div>
-                <div class="settings-container5">
-                    <span class="settings-text2">Gender:</span>
-                    <select name="profilegender" id="profilegender">
-                        {% for genderselect in genderlist %}
-                        {% if genderselect == gender %}
-                        <option value="{{genderselect}}" selected>{{genderselect}}</option>
-                        {% else %}
-                        <option value="{{genderselect}}">{{genderselect}}</option>
-                        {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="settings-container7">
-                    <span class="settings-text2">About Me:</span>
-                    <textarea name="profileaboutme" placeholder="Tell me about yourself" class="settings-textarea">{{aboutme}}</textarea>
-                </div>
-                <div class="settings-container7">
-                    <span class="settings-text2">My Interests:</span>
-                    <textarea name="profileinterests" placeholder="List your interests, separated by commas" class="settings-textarea2">{{interests}}</textarea>
-                </div>
-                <div class="settings-container5">
-                    <span class="settings-text2">Facebook:</span>
-                    <input type="text" name="profilefacebook" placeholder="Username" class="settings-textinput input" value="{{facebook}}" />
-                </div>
-                <div class="settings-container5">
-                    <span class="settings-text2">Twitter:</span>
-                    <input type="text" name="profiletwitter" placeholder="Handle" class="settings-textinput input" value="{{twitter}}" />
-                </div>
-                <div class="settings-container5">
-                    <span class="settings-text2">Instagram:</span>
-                    <input type="text" name="profileinstagram" placeholder="Profile" class="settings-textinput input" value="{{instagram}}" />
-                </div>
-                <div class="settings-container6">
-                    <input type="submit" class="settings-button1 button" name="saveprofile" value="Save" />
-                    <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
-                </div>
-            </form>
-        </div>
-        <div class="divider"></div>
-        <div class="settings-container4">
-            <span class="settings-text3">My Strengths:</span>
-            <form method="post" class="settings-form-check">
-                <div style="width: 100%; height: 300px; overflow: auto;">
-                    {% for strength in strengthlist %} {% if userstrengths.count(strength) > 0 %}
-                    <input type="checkbox" name="strengthselection" value="{{strength}}" checked> {{strength}}
-                    <br> {% else %}
-                    <input type="checkbox" name="strengthselection" value="{{strength}}"> {{strength}}
-                    <br> {% endif%} {% endfor %}
+        <div class="horizontal">
+            <div class="settings-container2">
+                <form method="post" enctype="multipart/form-data">
+                    <span class="settings-text2">Current User Icon:</span>
                     <br>
-                </div>
-                <a href=help target="_blank" rel="noreferrer noopener" class="settings-link">Need help? Visit here for more.</a>
-                <br>
-                <br>
-                <div class="settings-container9">
-                    <input type="submit" class="settings-button1 button" name="savestrengths" value="Save" />
-                    <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
-                </div>
-            </form>
-        </div>
-        <div class="divider"></div>
-        <div class="settings-container4">
-            <span class="settings-text3">Course Enrollments:</span>
-            <form method="post" class="settings-form-check">
-                <div style="width: 100%; height: 300px; overflow: auto;">
-                    {% for course in courselist %} {% if enrolled.count(course) > 0 %}
-                    <input type="checkbox" name="courseselection" value="{{course}}" checked> {{course}}
-                    <br> {% else %}
-                    <input type="checkbox" name="courseselection" value="{{course}}"> {{course}}
-                    <br> {% endif%} {% endfor %}
                     <br>
-                </div>
-                <a href=help target="_blank" rel="noreferrer noopener" class="settings-link">Need help? Visit here for more.</a>
-                <br>
-                <br>
-                <div class="settings-container9">
-                    <input type="submit" class="settings-button1 button" name="savecourses" value="Save" />
-                    <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
-                </div>
-            </form>
+                    <img src="{{ url_for('static',filename='assets/actual-profile-user.png') }}" alt="image" class="settings-image" />
+                    <br>
+                    <br>
+                    <div class="settings-container3">
+                        <input type="file" class="input-file-image" accept="image/png, image/jpeg" name="profileicon" id="profileicon" />
+                        <input type="submit" class="settings-button1 button" name="uploadimage" value="Upload To Server" />
+                    </div>
+                </form>
+            </div>
+            <div class="divider"></div>
+            <div class="settings-container4">
+                <form method="post" autocomplete="off">
+                    <div class="settings-container5">
+                        <span class="settings-text2">Name:</span>
+                        <input type="text" name="profilename" placeholder="Your display name" class="settings-textinput input" required="required" value="{{name}}" />
+                    </div>
+                    <div class="settings-container5">
+                        <span class="settings-text2">Gender:</span>
+                        <select name="profilegender" id="profilegender">
+                            {% for genderselect in genderlist %}
+                            {% if genderselect == gender %}
+                            <option value="{{genderselect}}" selected>{{genderselect}}</option>
+                            {% else %}
+                            <option value="{{genderselect}}">{{genderselect}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="settings-container7">
+                        <span class="settings-text2">About Me:</span>
+                        <textarea name="profileaboutme" placeholder="Tell me about yourself" class="settings-textarea">{{aboutme}}</textarea>
+                    </div>
+                    <div class="settings-container7">
+                        <span class="settings-text2">My Interests:</span>
+                        <textarea name="profileinterests" placeholder="List your interests, separated by commas" class="settings-textarea2">{{interests}}</textarea>
+                    </div>
+                    <div class="settings-container5">
+                        <span class="settings-text2">Facebook:</span>
+                        <input type="text" name="profilefacebook" placeholder="Username" class="settings-textinput input" value="{{facebook}}" />
+                    </div>
+                    <div class="settings-container5">
+                        <span class="settings-text2">Twitter:</span>
+                        <input type="text" name="profiletwitter" placeholder="Handle" class="settings-textinput input" value="{{twitter}}" />
+                    </div>
+                    <div class="settings-container5">
+                        <span class="settings-text2">Instagram:</span>
+                        <input type="text" name="profileinstagram" placeholder="Profile" class="settings-textinput input" value="{{instagram}}" />
+                    </div>
+                    <div class="settings-container6">
+                        <input type="submit" class="settings-button1 button" name="saveprofile" value="Save" />
+                        <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
+                    </div>
+                </form>
+            </div>
+            <div class="divider"></div>
+            <div class="settings-container4">
+                <span class="settings-text3">My Strengths:</span>
+                <form method="post" class="settings-form-check">
+                    <div style="width: 100%; height: 300px; overflow: auto;">
+                        {% for strength in strengthlist %} {% if userstrengths.count(strength) > 0 %}
+                        <input type="checkbox" name="strengthselection" value="{{strength}}" checked> {{strength}}
+                        <br> {% else %}
+                        <input type="checkbox" name="strengthselection" value="{{strength}}"> {{strength}}
+                        <br> {% endif%} {% endfor %}
+                        <br>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="settings-container9">
+                        <input type="submit" class="settings-button1 button" name="savestrengths" value="Save" />
+                        <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
+                    </div>
+                    <div class="settings-container10">
+                        <a href=help target="_blank" rel="noreferrer noopener" class="settings-link">Need help? Visit here for more.</a>
+                    </div>
+                </form>
+            </div>
+            <div class="divider"></div>
+            <div class="settings-container4">
+                <span class="settings-text3">Course Enrollments:</span>
+                <form method="post" class="settings-form-check">
+                    <div style="width: 100%; height: 300px; overflow: auto;">
+                        {% for course in courselist %} {% if enrolled.count(course) > 0 %}
+                        <input type="checkbox" name="courseselection" value="{{course}}" checked> {{course}}
+                        <br> {% else %}
+                        <input type="checkbox" name="courseselection" value="{{course}}"> {{course}}
+                        <br> {% endif%} {% endfor %}
+                        <br>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="settings-container9">
+                        <input type="submit" class="settings-button1 button" name="savecourses" value="Save" />
+                        <input type="reset" class="settings-button2 button" name="resetvalues" value="Reset" />
+                    </div>
+                    <div class="settings-container10">
+                        <a href=help target="_blank" rel="noreferrer noopener" class="settings-link">Need help? Visit here for more.</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -1,11 +1,29 @@
 {% extends "base.html" %} {% block title %}Search Results{% endblock %} {% block content %}
 <link href="{{ url_for('static',filename='results.css') }}" rel="stylesheet" />
+<div class="results-container"></div>
 <div class="results-container1">
-    <span class="results-text1">Results</span>
-    <span class="results-text2">These students meet the following {{filtertype}} criteria: {{resultcriteria}}</span>
-    <div>
-        {% for student in studentlist %}
-        <span>{{student}}</span> {% endfor %}
+    <div class="results-container2">
+        <span class="results-text">Search Results</span>
+        <span class="results-text1">These students meet the following {{filtertype}} criteria: {{resultcriteria}}</span>
+    </div>
+    <div class="results-container3">
+        {% for student, studentdata in studentlist.items() %}
+        <div class="results-container4">
+            {% for key, value in studentdata.items() %} {% if key == "icon" %}
+            <img src={{value}} alt="image" class="results-image" /> {% endif %} {% endfor %}
+            <div class="results-container5">
+                {% for key, value in studentdata.items() %} {% if key == "name" %}
+                <span class="results-text2">{{value}}</span> {% endif %} {% endfor %}
+                <span class="results-text3">{{student}}</span>
+            </div>
+            <form method="post" class="results-form">
+                <div class="results-container6">
+                    <input type="hidden" name=studentredirect value={{student}} />
+                    <input type="submit" class="results-button1 button" name=viewprofile value="View Profile" />
+                </div>
+            </form>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

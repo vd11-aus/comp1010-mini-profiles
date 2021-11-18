@@ -4,16 +4,27 @@ body {
     padding: 0;
 }
 
-.settings-container {
-    top: 80px;
-    flex: 0 0 auto;
+.settings-background {
     width: 100%;
-    bottom: 0px;
+    height: auto;
     left: 0px;
     right: 0px;
-    padding: 60px;
-    padding-top: 40px;
+    bottom: 0px;
+    top: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-container {
+    flex: 0 0 auto;
+    width: auto;
     height: auto;
+    padding: 60px;
+    border-radius: 16px;
     display: flex;
     position: fixed;
     align-items: flex-start;
@@ -32,6 +43,24 @@ body {
     justify-content: center;
     background-color: #000000;
     transition-duration: 0.15s;
+}
+
+.settings-container11 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.settings-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 36px;
 }
 
@@ -67,8 +96,7 @@ body {
 
 .divider {
     height: 100%;
-    width: 1px;
-    background-color: grey;
+    width: 10px;
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -124,6 +152,15 @@ body {
 
 .settings-container9 {
     margin-top: 6px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-container10 {
+    margin-top: 12px;
     width: 100%;
     display: flex;
     flex-direction: row;

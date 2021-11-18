@@ -1,8 +1,12 @@
 {% extends "base.html" %} {% block title %}Introduction{% endblock %} {% block content %}
 <link href="{{ url_for('static',filename='introduction.css') }}" rel="stylesheet" />
 <div class="introduction-container">
-    <span style="font-size: 48px; font-weight: bold; margin-bottom: 6px;">Welcome!</span>
-    <span>Click the cog-wheel on the top-right to start editing your profile details.</span>
-    <img src="{{ url_for('static',filename='assets/tutorial.png') }}" alt="image" class="introduction-image" />
+    <div class="introduction-container1">
+        <div class="introduction-container2">
+            <span class="introduction-text1">Welcome</span>
+        </div>
+        <span>Click the cog-wheel on the top-right to start editing your profile details.</span>
+        <img src="{{ url_for('static',filename='assets/tutorial.png') }}" alt="image" class="introduction-image" />
+    </div>
 </div>
 {% endblock %}

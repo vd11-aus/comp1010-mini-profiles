@@ -21,6 +21,18 @@ body {
     background: rgba(0, 0, 0, 0.7);
 }
 
+.search-container9 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #000000;
+    transition-duration: 0.15s;
+}
+
 .search-container1 {
     height: auto;
     width: 850px;
@@ -109,6 +121,7 @@ body {
 .search-text1 {
     font-size: 36px;
     font-weight: bold;
+    color: white;
 }
 
 .divider {

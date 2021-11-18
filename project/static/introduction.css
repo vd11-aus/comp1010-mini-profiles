@@ -5,25 +5,55 @@ body {
 }
 
 .introduction-container {
-    top: 80px;
-    flex: 0 0 auto;
-    width: auto;
-    bottom: 0px;
+    width: 100%;
+    height: auto;
     left: 0px;
     right: 0px;
+    bottom: 0px;
+    top: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.introduction-container1 {
+    flex: 0 0 auto;
+    width: auto;
     padding: 60px;
-    padding-top: 40px;
     height: auto;
     display: flex;
-    position: fixed;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
     background-color: rgba(255, 255, 255);
+    border-radius: 16px;
+    position: relative;
+}
+
+.introduction-container2 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #000000;
+    transition-duration: 0.15s;
+    margin-bottom: 18px;
 }
 
 .introduction-image {
     margin-top: 24px;
     width: 600px;
     margin-bottom: 12px;
+}
+
+.introduction-text1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
 }

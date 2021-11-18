@@ -1,0 +1,147 @@
+body {
+    font-family: arial;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    width: 100%;
+    height: auto;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-container1 {
+    width: auto;
+    height: auto;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    top: 40px;
+    background-color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    position: absolute;
+    border-radius: 16px;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.profile-container2 {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background: white;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.profile-container3 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 50px;
+}
+
+.profile-container4 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: stretch;
+}
+
+.profile-container5 {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-bottom: 12px;
+}
+
+.profile-container6 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-image {
+    object-fit: cover;
+    border-radius: 999px;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 25px;
+}
+
+.profile-socialicon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+.profile-link {
+    color: #363636;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    cursor: pointer;
+    filter: opacity(70%);
+}
+
+.profile-link:focus {
+    filter: opacity(85%);
+}
+
+.profile-text1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.profile-text2 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.profile-text3 {
+    margin-top: 6px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+.profile-text4 {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: grey;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
