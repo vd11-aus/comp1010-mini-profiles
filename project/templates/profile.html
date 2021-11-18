@@ -10,17 +10,17 @@
                 <span class="profile-text3">{{value}}</span> {% endif %} {% endfor %}
             </div>
             <div class="profile-container4">
-                {% for key, value in studentprofile.items() %} {% if key == "facebook" %}
+                {% for key, value in studentprofile.items() %} {% if key == "facebook" and value != "" %}
                 <div class="profile-container5">
                     <img src="{{ url_for('static',filename='assets/facebook.png') }}" alt="image" class="profile-socialicon" />
                     <a href="https://www.facebook.com/{{value}}" target="_blank" rel="noreferrer noopener" class="profile-link">Facebook</a>
                 </div>
-                {% endif %} {% endfor %} {% for key, value in studentprofile.items() %} {% if key == "twitter" %}
+                {% endif %} {% endfor %} {% for key, value in studentprofile.items() %} {% if key == "twitter" and value != "" %}
                 <div class="profile-container5">
                     <img src="{{ url_for('static',filename='assets/twitter.png') }}" alt="image" class="profile-socialicon" />
                     <a href="https://twitter.com/{{value}}" target="_blank" rel="noreferrer noopener" class="profile-link">Twitter</a>
                 </div>
-                {% endif %} {% endfor %} {% for key, value in studentprofile.items() %} {% if key == "instagram" %}
+                {% endif %} {% endfor %} {% for key, value in studentprofile.items() %} {% if key == "instagram" and value != "" %}
                 <div class="profile-container5">
                     <img src="{{ url_for('static',filename='assets/instagram.png') }}" alt="image" class="profile-socialicon" />
                     <a href="https://www.instagram.com/{{value}}" target="_blank" rel="noreferrer noopener" class="profile-link">Instagram</a>

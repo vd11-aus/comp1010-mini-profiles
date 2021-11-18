@@ -266,6 +266,36 @@ def introduction():
             return redirect(url_for("help"))
     return render_template("introduction.html", name = profile_data["name"], zid = session["currentuser"], backgroundimage = background_generator())
 
+# COMPLETE - HELP
+@app.route("/help", methods=["GET", "POST"])
+def help():
+    if session["currentuser"] == "":
+        return redirect(url_for("error", reasoncode = "900", previouspage = "signin"))
+    update_icon()
+    profile_data_grab = fs_link.collection("profiles").document(session["currentuser"]).get()
+    if profile_data_grab.exists:
+        profile_data = profile_data_grab.to_dict()
+    strength_data_grab = fs_link.collection("other").document("strengths").get()
+    if strength_data_grab.exists:
+        strength_data = strength_data_grab.to_dict()["strengths"]
+    course_data_grab = fs_link.collection("other").document("courses").get()
+    if course_data_grab.exists:
+        course_data = course_data_grab.to_dict()["courses"]
+    if request.method == "POST":
+        if "logout" in request.form:
+            session["currentuser"] = ""
+            return redirect(url_for("signin"))
+        if "settings" in request.form:
+            return redirect(url_for("settings"))
+        if "home" in request.form:
+            return redirect(url_for("home"))
+        if "search" in request.form:
+            return redirect(url_for("search"))
+        if "help" in request.form:
+            return redirect(url_for("help"))
+    return render_template("help.html", name = profile_data["name"], zid = session["currentuser"], strengthlist = strength_data, courselist = course_data,
+        backgroundimage = background_generator())
+
 # COMPLETE - HOME
 @app.route("/home", methods=["GET", "POST"])
 def home():

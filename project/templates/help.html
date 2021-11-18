@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Help{% endblock %} {% block content %}
+<link href="{{ url_for('static',filename='help.css') }}" rel="stylesheet" />
+<div class="help-container">
+    <div class="help-container1">
+        <div class="help-container2">
+            <span class="help-text1">Help</span>
+        </div>
+        <span>Need help understanding what a course/strength means? Learn about it here!</span>
+        <div class="help-container3">
+            <span class="help-text2">Strengths</span> {% for strength, values in strengthlist.items() %} {% for key, value in values.items() %} {% if key == "explanation" %}
+            <span class="help-text3">{{strength}} - {{value}}</span> {% endif %} {% endfor %} {% endfor %}
+            <div style="margin-bottom: 36px;"></div>
+            <span class="help-text2">Courses</span> {% for course, values in courselist.items() %} {% for key, value in values.items() %} {% if key == "title" %}
+            <span class="help-text3">{{course}} - {{value}}</span> {% endif %} {% endfor %} {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
