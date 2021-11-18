@@ -58,7 +58,7 @@
                             {% for strength in strengthlist %}
                             <div style="display: flex; flex-direction: row;">
                                 {% if userstrengths.count(strength) > 0 %}
-                                <input type="checkbox" name="strengthselection" value="{{courstrengthse}}" class="search-checkbox"> <span style="color: red;">{{strength}}</span> {% else %}
+                                <input type="checkbox" name="strengthselection" value="{{strength}}" class="search-checkbox"> <span style="color: red;">{{strength}}</span> {% else %}
                                 <input type="checkbox" name="strengthselection" value="{{strength}}" class="search-checkbox"> <span>{{strength}}</span> {% endif %}
                             </div> {% endfor %}
                         </div>

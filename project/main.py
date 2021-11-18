@@ -168,6 +168,8 @@ def filter_students_courses(filters):
         outcome[student] = {}
         outcome[student]["name"] = namevalue
         outcome[student]["icon"] = iconvalue
+    if session["currentuser"] in outcome:
+        outcome.pop(session["currentuser"])
     session["filterstudentlist"] = outcome
 
 def filter_students_strengths(filters):
@@ -196,6 +198,8 @@ def filter_students_strengths(filters):
         outcome[student] = {}
         outcome[student]["name"] = namevalue
         outcome[student]["icon"] = iconvalue
+    if session["currentuser"] in outcome:
+        outcome.pop(session["currentuser"])
     session["filterstudentlist"] = outcome
 
 # COMPLETE - SIGN IN
