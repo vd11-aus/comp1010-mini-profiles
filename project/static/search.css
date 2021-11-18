@@ -139,6 +139,11 @@ body {
     transition-duration: 0.15s;
 }
 
+.search-checkbox {
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
 .search-button1:hover {
     filter: opacity(70%);
     cursor: pointer;

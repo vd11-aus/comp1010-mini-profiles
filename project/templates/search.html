@@ -18,8 +18,8 @@
                 </form>
             </div>
         </div>
-        <span style="margin-bottom: 24px;">Have a zID you want to look up? Want to find people by their strengths or courses? 
-            Input into the search or filters below to find those who you may want to connect with!
+        <span style="margin-bottom: 32px;">Have a zID you want to look up? Want to find people by their strengths or courses? 
+            Input into the search or filters below to find those who you may want to connect with! 
         </span>
         <div class="search-container2">
             <div>
@@ -31,7 +31,9 @@
                         <div style="width: 100%; height: 200px; overflow: auto;">
                             {% for course in courselist %}
                             <div style="display: flex; flex-direction: row;">
-                                <input type="checkbox" name="courseselection" value="{{course}}"> {{course}}
+                                {% if usercourses.count(course) > 0 %}
+                                <input type="checkbox" name="courseselection" value="{{course}}" class="search-checkbox"> <span style="color: red;">{{course}}</span> {% else %}
+                                <input type="checkbox" name="courseselection" value="{{course}}" class="search-checkbox"> <span>{{course}}</span> {% endif %}
                             </div> {% endfor %}
                         </div>
                         <div style="height: 12px;"></div>
@@ -55,7 +57,9 @@
                         <div style="width: 100%; height: 200px; overflow: auto;">
                             {% for strength in strengthlist %}
                             <div style="display: flex; flex-direction: row;">
-                                <input type="checkbox" name="strengthselection" value="{{strength}}"> {{strength}}
+                                {% if userstrengths.count(strength) > 0 %}
+                                <input type="checkbox" name="strengthselection" value="{{courstrengthse}}" class="search-checkbox"> <span style="color: red;">{{strength}}</span> {% else %}
+                                <input type="checkbox" name="strengthselection" value="{{strength}}" class="search-checkbox"> <span>{{strength}}</span> {% endif %}
                             </div> {% endfor %}
                         </div>
                         <div style="height: 12px;"></div>
@@ -70,5 +74,6 @@
                 </form>
             </div>
         </div>
+        <i style="margin-top: 44px; font-size: 11px;">Courses and strengths marked in <span style="color: red;">red</span> are those that you are in.</i>
     </div>
     {% endblock %}

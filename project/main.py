@@ -325,7 +325,7 @@ def home():
     return render_template("home.html", name = profile_data["name"], zid = session["currentuser"], newsfeed = newest_to_oldest, 
         backgroundimage = background_generator())
 
-# INCOMPLETE - SETTINGS
+# COMPLETE - SETTINGS
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
     if session["currentuser"] == "":
@@ -387,7 +387,7 @@ def settings():
         twitter = profile_data["twitter"], instagram = profile_data["instagram"], courselist = sorted(course_data), enrolled = enrolledcourses,
         strengthlist = sorted(strength_data), userstrengths = acknowledgedstrengths, backgroundimage = background_generator())
 
-# INCOMPLETE - CHANGE PASSWORD
+# COMPLETE - CHANGE PASSWORD
 @app.route("/changepassword", methods=["GET", "POST"])
 def changepassword():
     if session["currentuser"] == "":
@@ -442,6 +442,20 @@ def search():
     strength_data_grab = fs_link.collection("other").document("strengths").get()
     if strength_data_grab.exists:
         strength_data = strength_data_grab.to_dict()["strengths"]
+    course_data_grab = fs_link.collection("other").document("courses").get()
+    if course_data_grab.exists:
+        course_data = course_data_grab.to_dict()["courses"]
+    strength_data_grab = fs_link.collection("other").document("strengths").get()
+    if strength_data_grab.exists:
+        strength_data = strength_data_grab.to_dict()["strengths"]
+    acknowledgedstrengths = []
+    for strength in strength_data:
+        if strength_data_grab.to_dict()["strengths"][strength]["students"].count(session["currentuser"]) > 0:
+            acknowledgedstrengths.append(str(strength))
+    enrolledcourses = []
+    for course in course_data:
+        if course_data_grab.to_dict()["courses"][course]["students"].count(session["currentuser"]) > 0:
+            enrolledcourses.append(str(course))
     if request.method == "POST":
         if "logout" in request.form:
             session["currentuser"] = ""
@@ -469,7 +483,7 @@ def search():
                 session["filtercriteria"] = request.form.getlist("strengthselection")
                 return redirect(url_for("results"))
     return render_template("search.html", name = profile_data["name"], zid = session["currentuser"], courselist = sorted(course_data), 
-        strengthlist = sorted(strength_data), backgroundimage = background_generator())
+        strengthlist = sorted(strength_data), usercourses = enrolledcourses, userstrengths = acknowledgedstrengths, backgroundimage = background_generator())
 
 # COMPLETE - RESULTS
 @app.route("/search/results", methods=["GET", "POST"])
@@ -496,7 +510,7 @@ def results():
             return redirect(url_for("profile", inputtedid = request.form["studentredirect"]))
     return render_template("results.html", name = profile_data["name"], zid = session["currentuser"], filtertype = session["filtertype"], resultcriteria = session["filtercriteria"], studentlist = session["filterstudentlist"], backgroundimage = background_generator())
 
-# INCOMPLETE - PROFILE
+# COMPLETE - PROFILE
 @app.route("/profile/<inputtedid>", methods=["GET", "POST"])
 def profile(inputtedid):
     if session["currentuser"] == "":
